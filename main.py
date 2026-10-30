@@ -34,8 +34,8 @@ def setup_argparse():
     parser.add_argument(
         "--format",
         type=str,
-        choices=["json", "yaml"],
-        help="Specify the configuration file format (json or yaml). If omitted, it will be inferred from the file extension.",
+        choices=["json", "yaml", "ini"],
+        help="Specify the configuration file format (json, yaml, or ini). If omitted, it will be inferred from the file extension.",
     )
     parser.add_argument(
         "--log-level",
@@ -71,14 +71,27 @@ def load_config(config_file, file_format=None):
     if file_format is None:
         if config_path.suffix.lower() == ".json":
             file_format = "json"
-        elif config_path.suffix.lower() == ".yaml" or config_path.suffix.lower() == ".yml":
+        elif config_path.suffix.lower() in (".yaml", ".yml"):
             file_format = "yaml"
+        elif config_path.suffix.lower() == ".ini":
+            file_format = "ini"
         else:
             raise ValueError(
                 "Could not infer configuration file format. Please specify using --format."
             )
 
     try:
+        if file_format == "ini":
+            # INI was promised by the help text and README from the
+            # start but never implemented, so every .ini file failed
+            # here. configparser gives {section: {key: value}}; all
+            # values stay strings, since INI has no other types, and a
+            # schema written for an INI file has to expect strings.
+            import configparser
+
+            ini = configparser.ConfigParser()
+            ini.read(config_file)
+            return {section: dict(ini[section]) for section in ini.sections()}
         with open(config_file, "r") as f:
             if file_format == "json":
                 config_data = json.load(f)
@@ -183,18 +196,15 @@ def main():
         sys.exit(1)
     except jsonschema.exceptions.ValidationError as e:
         logging.error(e)
-        print(f"Configuration validation error: {e}")  # Add user-friendly output
-        print(e)
+        print(f"Configuration validation error: {e}")
         sys.exit(1)
     except jsonschema.exceptions.SchemaError as e:
         logging.error(e)
-        print(f"Schema error: {e}")  # Add user-friendly output
-        print(e)
+        print(f"Schema error: {e}")
         sys.exit(1)
     except Exception as e:
         logging.error(f"An unexpected error occurred: {e}")
-        print(f"An unexpected error occurred: {e}") # Add user-friendly output
-        print(e)
+        print(f"An unexpected error occurred: {e}")
         sys.exit(1)
 
 
