@@ -195,12 +195,14 @@ def main():
         print(f"Error: {e}")  # Add user-friendly output
         sys.exit(1)
     except jsonschema.exceptions.ValidationError as e:
-        logging.error(e)
-        print(f"Configuration validation error: {e}")
+        # validate_config already logged the full error with the
+        # schema dump; repeating it here as a second log line plus a
+        # full print made one failure fill the terminal three times.
+        # The print keeps the short form: what failed, and where.
+        print(f"Configuration validation error: {e.message} (at {'/'.join(str(p) for p in e.absolute_path) or 'root'})")
         sys.exit(1)
     except jsonschema.exceptions.SchemaError as e:
-        logging.error(e)
-        print(f"Schema error: {e}")
+        print(f"Schema error: {e.message}")
         sys.exit(1)
     except Exception as e:
         logging.error(f"An unexpected error occurred: {e}")
