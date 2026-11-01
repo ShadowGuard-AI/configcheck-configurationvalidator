@@ -69,6 +69,9 @@ def load_config(config_file, file_format=None):
         raise FileNotFoundError(f"Configuration file not found: {config_file}")
 
     if file_format is None:
+        # I look at the last suffix only. A file named config.yaml.bak
+        # reads as .bak here and needs an explicit format flag, even
+        # though a human reads the middle suffix as the real one.
         if config_path.suffix.lower() == ".json":
             file_format = "json"
         elif config_path.suffix.lower() in (".yaml", ".yml"):
@@ -91,6 +94,10 @@ def load_config(config_file, file_format=None):
 
             ini = configparser.ConfigParser()
             ini.read(config_file)
+            # I take each section as configparser presents it, which folds
+            # the DEFAULT section's keys into every section. A schema that
+            # forbids extra keys will fail on keys the file never wrote
+            # under that section's own heading.
             return {section: dict(ini[section]) for section in ini.sections()}
         with open(config_file, "r") as f:
             if file_format == "json":
@@ -181,6 +188,9 @@ def main():
     logging.getLogger().setLevel(args.log_level)
 
     try:
+        # I load the config before the schema, so when both are broken
+        # the config error is the one reported. The schema file is not
+        # even opened until the config has parsed cleanly.
         config_data = load_config(args.config_file, args.format)
         schema = load_schema(args.schema_file)
         validate_config(config_data, schema)
