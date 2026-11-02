@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-label="The hotel entrance in three depths: the lit empty lobby, the mat, and the snow on the canopy still, the revolving door turning once slowly while the figure with the folder crosses the step, and the raised glove rising, holding, and lowering as the door turns">
+<rect width="1200" height="520" fill="#6c707a"/>
+<rect x="90" y="60" width="1020" height="360" fill="#a89c84"/>
+<rect x="60" y="104" width="1080" height="34" fill="#585c66"/>
+<rect x="60" y="94" width="1080" height="12" fill="#f4f6f8"/>
+<!-- far depth: lobby empty and lit, mat still, snow still -->
+<rect x="430" y="160" width="430" height="260" fill="#eee0b2"/>
+<rect x="470" y="330" width="350" height="48" fill="#8c6e4a"/>
+<!-- revolving door drum -->
+<rect x="490" y="160" width="310" height="260" fill="#c4ced6"/>
+<line x1="568" y1="160" x2="568" y2="420" stroke="#464a54" stroke-width="6"/>
+<line x1="722" y1="160" x2="722" y2="420" stroke="#464a54" stroke-width="6"/>
+<!-- one wing turns once, slowly, then rests for a long interval -->
+<g>
+<rect x="638" y="160" width="14" height="260" fill="#34383f">
+<animate attributeName="x" values="638;560;638;716;638;638" keyTimes="0;0.12;0.24;0.36;0.48;1" dur="24s" repeatCount="indefinite"/>
+<animate attributeName="opacity" values="1;0.35;1;0.35;1;1" keyTimes="0;0.12;0.24;0.36;0.48;1" dur="24s" repeatCount="indefinite"/>
+</rect>
+</g>
+<!-- the figure crosses the step during the turn and is not shown again in the cycle -->
+<g opacity="1">
+<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.44;0.52;0.92;1" dur="24s" repeatCount="indefinite"/>
+<g>
+<animateTransform attributeName="transform" type="translate" values="0 0;0 0;-330 0;-330 0" keyTimes="0;0.1;0.48;1" dur="24s" repeatCount="indefinite"/>
+<polygon points="958,420 966,300 1006,300 1014,420" fill="#56463a"/>
+<circle cx="986" cy="282" r="15" fill="#d8b08c"/>
+<rect x="1002" y="318" width="38" height="48" fill="#c4a468"/>
+</g>
+</g>
+<!-- near depth: the raised glove rises, holds while the door is still, and lowers as the door turns -->
+<g>
+<animateTransform attributeName="transform" type="translate" values="0 34;0 0;0 0;0 34;0 34" keyTimes="0;0.08;0.3;0.48;1" dur="24s" repeatCount="indefinite"/>
+<line x1="330" y1="330" x2="392" y2="252" stroke="#343a4a" stroke-width="24"/>
+<g fill="#f3f1ea">
+<rect x="388" y="168" width="13" height="66" rx="6"/><rect x="405" y="158" width="13" height="76" rx="6"/><rect x="422" y="156" width="13" height="78" rx="6"/><rect x="439" y="164" width="13" height="70" rx="6"/>
+<rect x="384" y="196" width="72" height="62" rx="10"/>
+</g>
+<rect x="390" y="260" width="60" height="26" fill="#343a4a"/>
+</g>
+<polygon points="270,420 286,190 374,190 390,420" fill="#343a4a"/>
+<circle cx="330" cy="168" r="22" fill="#deb894"/>
+<rect x="306" y="132" width="48" height="20" fill="#1e212a"/>
+<!-- steps and snow piles, still -->
+<rect x="150" y="420" width="900" height="22" fill="#96948e"/>
+<rect y="442" width="1200" height="78" fill="#60626a"/>
+<g fill="#f4f6f8"><ellipse cx="90" cy="428" rx="58" ry="16"/><ellipse cx="1110" cy="428" rx="58" ry="16"/></g>
+<!-- brass door plate, blank in the scene -->
+<rect x="852" y="252" width="34" height="58" fill="#ba9854" stroke="#786028" stroke-width="3"/>
+</svg>
