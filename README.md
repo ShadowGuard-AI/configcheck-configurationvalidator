@@ -1,12 +1,12 @@
-![A hotel entrance in winter, early in the morning: the bottom step swept clean with snow piled at both ends, the revolving door still, the doorman beside it in his greatcoat with one glove raised, the small figure with the folder standing at the kerb, and the lit and empty lobby through the glass, with no lettering anywhere](intro-banner.png)
+![Hands slipping a small brass part into a plain ring gauge close up on a maple bench, a neat row of passed parts behind, with no lettering anywhere](intro-banner.png)
 
 # configcheck-ConfigurationValidator
 
 Title block: the name above is set in Big Shoulders Display SC in carbon copy blue on an office beige plate. A small glove glyph stands beside this heading and beside no other: 🧤. The remaining headings keep the day book treatment, set as entries with ruled columns, a small tag at the left of major headings only, so that a long document stays quick to scan.
 
-![One raised dress glove, palm out, with its cuff below it, inside a doorway suggested by two vertical lines and a lintel, and the name lettered below in carbon copy blue on office beige](logo.png)
+![A plain steel ring gauge with a brass ring in its mouth on a maple bench, set in a plain ring](logo.png)
 
-![A hotel entrance in winter: the revolving door still, snow on the canopy edge, the doorman with one glove raised towards a small figure carrying a folder, and the title engraved on the brass door plate at hand height](banner.png)
+![An inspector's bench with rows of machined parts, hands trying one part in a plain ring gauge, passed parts in a neat row and set-asides in a canvas tray, plain gauges on a rack behind, with no lettering anywhere](banner.png)
 
 ![The entrance in three depths: the lobby, the mat, and the snow still, the revolving door turning once slowly while the figure with the folder crosses the step, and the raised glove rising, holding, and lowering as the door turns](scene.svg)
 
